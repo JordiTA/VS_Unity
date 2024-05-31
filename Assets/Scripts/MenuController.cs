@@ -5,9 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 using System.ComponentModel;
+using Unity.VisualScripting;
+using System;
 
-public class MenuController : MonoBehaviour
-{
+public class MenuController : MonoBehaviour{
+
+    public static MenuController _MENUCONTROLLER; //SINGLETON
+
     [Header("Volume Settings")]
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSliderValue = null;
@@ -34,9 +38,26 @@ public class MenuController : MonoBehaviour
 
     [Header("Resolution Dropdowns")]
     [SerializeField] private TMP_Dropdown resolutionDropdown = null;
+    [Space(10)]
+    [Header("Player Name Field")]
+    [SerializeField]
+    private TMP_Text playerNameDialog;
+
 
     private Resolution[] resolutions;
+    private int actualHighScore;
+    private string playerName;
 
+    private void Awake(){
+        if (_MENUCONTROLLER != null && _MENUCONTROLLER != this)
+        {
+            Destroy(this.gameObject);
+        }else
+        {
+            _MENUCONTROLLER = this;
+            DontDestroyOnLoad(this);
+        }
+    }
     private void Start() {
         resolutions = Screen.resolutions;
         resolutionDropdown.ClearOptions();
@@ -64,9 +85,8 @@ public class MenuController : MonoBehaviour
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 
-    public void StartGameTutorial()
-    {
-        SceneManager.LoadScene(newGameLevel);
+    public void CreditsScene(){
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame()
@@ -97,7 +117,7 @@ public class MenuController : MonoBehaviour
         isFullScreen = _isFullScreen;
     }
 
-    public void  SetQuality(int _qualityIndex)
+    public void SetQuality(int _qualityIndex)
     {
         qualityLevel = _qualityIndex;
     }
@@ -109,7 +129,7 @@ public class MenuController : MonoBehaviour
         PlayerPrefs.SetInt("masterQuality", qualityLevel);
         QualitySettings.SetQualityLevel(qualityLevel);
 
-        PlayerPrefs.SetInt("masterFullscreen", (isFullScreen ? 1 : 0));
+        PlayerPrefs.SetInt("masterFullscreen", isFullScreen ? 1 : 0);
         Screen.fullScreen = isFullScreen;
 
         StartCoroutine(ConfirmationBox());
@@ -141,6 +161,35 @@ public class MenuController : MonoBehaviour
             volumeTextValue.text = defaultVolume.ToString("0.0");
             VolumeApply();
         }
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("MainMenu");
+    }
+    public void RaceScene(){
+        SceneManager.LoadScene("Race");
+    }
+    public void LostScene(){
+        SceneManager.LoadScene("Lost");
+    }
+    public void SaveHighScore(int _highScore)
+    {
+        actualHighScore = _highScore;
+        SceneManager.LoadScene("Highscore");
+    }
+    public int GetHighScore()
+    {
+        return actualHighScore;
+    }
+    public void SavePlayerName(){
+        playerName = playerNameDialog.text;
+        SceneManager.LoadScene(newGameLevel);
+    }
+    public void PracticeScene(){
+        SceneManager.LoadScene("Practice");
+    }
+    public string GetPlayerName(){
+        return playerName;
     }
 
     public IEnumerator ConfirmationBox()

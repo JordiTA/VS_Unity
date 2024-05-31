@@ -1,0 +1,114 @@
+{
+    "name": "InputActions",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "afa04bdd-5af6-4c6c-a52e-36209f10fb14",
+            "actions": [
+                {
+                    "name": "Forward",
+                    "type": "Button",
+                    "id": "63c39107-5ef5-425f-960c-51f1a7b081a9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Reverse",
+                    "type": "Button",
+                    "id": "1cf67c61-2e5c-410d-90f9-6ddb1d68565f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnLeft",
+                    "type": "Button",
+                    "id": "344e3c39-baf4-4a64-970b-22f5c11e5e6a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TurnRight",
+                    "type": "Button",
+                    "id": "6d2bc8d3-0c8d-4e52-acc8-953c7335eb6d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Handbrake",
+                    "type": "Value",
+                    "id": "1d152b16-72d0-4f2a-9a71-e4f54d77836f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "5d67c9d8-116d-43a6-acc3-5d7ddf0cec36",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Handbrake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ea60daf4-895f-47e8-8f42-2e2ec4efc422",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reverse",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d01d8c02-5f7a-41cd-a5fe-349c51d8225f",
+                    "path": "<Keyboard>/a",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e35d58c2-f01e-4c3b-8f47-7613df074e44",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TurnRight",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e71f7df-8ce5-42da-8c1b-7058e2e3ba1d",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Forward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
